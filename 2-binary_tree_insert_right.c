@@ -10,7 +10,7 @@
 
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
-	binary_tree_t *right_node = binary_tree_node(parent, value);
+	binary_tree_t *right_node = binary_tree_node(NULL, value);
 
 	if (parent == NULL)
 		return (NULL);
@@ -26,6 +26,7 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 
 
 	parent->right = right_node;
+	right_node->parent = parent;
 
 	return (right_node);
 }
