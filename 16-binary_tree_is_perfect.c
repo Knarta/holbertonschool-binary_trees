@@ -26,12 +26,12 @@ size_t binary_tree_height(const binary_tree_t *tree)
 /**
  * is_perfect_recursive - function recursive
  * @tree: pointer to the node of the tree to check
+ * @cur_D: calculate the depth
+ * @max_H: maximum heigt of the binary tree
  * Return: 0 if tree is NULL or 1 if equal
  */
-int is_perfect_recursive(const binary_tree_t *tree)
+int is_perfect_recursive(const binary_tree_t *tree, size_t cur_D, size_t max_H)
 {
-	size_t cur_depth;
-	size_t max_height;
 	int left_height = 0;
 	int right_height = 0;
 
@@ -41,14 +41,14 @@ int is_perfect_recursive(const binary_tree_t *tree)
 	if (!tree->left && !tree->right)
 	{
 
-		if (cur_depth == max_height)
+		if (cur_D == max_H)
 			return (1);
 		else
 			return (0);
 	}
-	left_height = is_perfect_recursive(tree->left, cur_depth + 1, max_height);
+	left_height = is_perfect_recursive(tree->left, cur_D + 1, max_H);
 
-	right_height = is_perfect_recursive(tree->right, cur_depth + 1, max_height);
+	right_height = is_perfect_recursive(tree->right, cur_D + 1, max_H);
 
 	if (left_height &&  right_height)
 		return (1);
